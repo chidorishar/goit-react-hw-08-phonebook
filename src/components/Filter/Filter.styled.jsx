@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { interactiveInput } from 'components/common/sharedStyles';
+import { interactiveInput } from 'components/common/shared.styled';
 
 export const FilterLabel = styled.label`
   font-size: ${p => p.theme.fontSizes[2]}px;

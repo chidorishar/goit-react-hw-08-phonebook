@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { activeAccentedButton } from 'components/common/sharedStyles';
+import { activeAccentedButton } from 'components/common/shared.styled';
 
 export const ContactInfo = styled.div`
   font-size: 16px;

@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
-import { interactiveInput } from 'components/common/sharedStyles';
-import { activeAccentedButton } from 'components/common/sharedStyles';
+import {
+  activeAccentedButton,
+  interactiveInput,
+} from 'components/common/shared.styled';
 
 export const AddContactButton = styled.button`
   ${activeAccentedButton};
