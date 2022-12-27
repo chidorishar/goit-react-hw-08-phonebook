@@ -1,12 +1,19 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 
-import { axiosBaseQuery } from 'services/phonebookBackendAPI';
+import { AUTH_HEADER_NAME, axiosBaseQuery } from 'services/phonebookBackendAPI';
 
 export const phonebookAPI = createApi({
   reducerPath: 'phonebookAPI',
 
   baseQuery: axiosBaseQuery({
     baseUrl: 'https://connections-api.herokuapp.com/contacts/',
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token;
+      if (token) {
+        headers.set([AUTH_HEADER_NAME], `Bearer ${token}`);
+      }
+      return headers;
+    },
   }),
 
   tagTypes: ['Contacts'],

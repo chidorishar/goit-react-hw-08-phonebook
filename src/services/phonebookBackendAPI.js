@@ -1,10 +1,20 @@
 import axios from 'axios';
 
-export const axiosBaseQuery =
-  ({ baseUrl } = { baseUrl: '' }) =>
-  async ({ url = '', method, data, params }) => {
+export const AUTH_HEADER_NAME = 'Authorization';
+
+export const axiosBaseQuery = (
+  { baseUrl, prepareHeaders } = { baseUrl: '' }
+) => {
+  const headers = new Headers();
+
+  return async ({ url = '', method, data, params }, api) => {
+    prepareHeaders(headers, api);
+    axios.defaults.headers.common[AUTH_HEADER_NAME] =
+      headers.get(AUTH_HEADER_NAME) || '';
+
     try {
       const result = await axios({ url: baseUrl + url, method, data, params });
+
       return { data: result.data };
     } catch (axiosError) {
       let err = axiosError;
@@ -16,3 +26,4 @@ export const axiosBaseQuery =
       };
     }
   };
+};

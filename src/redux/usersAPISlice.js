@@ -1,6 +1,6 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 
-import { axiosBaseQuery } from 'services/phonebookBackendAPI';
+import { AUTH_HEADER_NAME, axiosBaseQuery } from 'services/phonebookBackendAPI';
 
 export const usersAPI = createApi({
   reducerPath: 'usersAPI',
@@ -10,7 +10,7 @@ export const usersAPI = createApi({
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
       if (token) {
-        headers.set('authorization', `Bearer ${token}`);
+        headers.set([AUTH_HEADER_NAME], `Bearer ${token}`);
       }
       return headers;
     },
