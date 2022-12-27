@@ -13,6 +13,7 @@ import { Container } from 'components/common/shared.styled';
 const LINKS = [
   { name: 'Register', to: '/' },
   { name: 'Login', to: 'login' },
+  { name: 'Contacts', to: 'contacts' },
 ];
 
 export default function SharedLayout() {
