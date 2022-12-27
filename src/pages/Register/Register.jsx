@@ -1,4 +1,5 @@
 import { Notify } from 'notiflix';
+
 import { useSignupUserMutation } from 'redux/usersAPISlice';
 
 export function Register() {
@@ -14,7 +15,12 @@ export function Register() {
     const userCredentials = { name, email, password };
 
     try {
-      await sendSignupRequest(userCredentials).unwrap();
+      const {
+        user: { name: userName },
+      } = await sendSignupRequest(userCredentials).unwrap();
+      Notify.success(
+        `You has been successfully registered! Welcome ${userName} 🥳`
+      );
     } catch (err) {
       Notify.failure(`Registration failed! Please try again.`);
     }
