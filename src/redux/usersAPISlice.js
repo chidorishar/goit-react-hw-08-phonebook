@@ -7,6 +7,13 @@ export const usersAPI = createApi({
 
   baseQuery: axiosBaseQuery({
     baseUrl: 'https://connections-api.herokuapp.com/users/',
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token;
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`);
+      }
+      return headers;
+    },
   }),
 
   tagTypes: ['UserData'],
