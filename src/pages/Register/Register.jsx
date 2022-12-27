@@ -1,17 +1,23 @@
+import { Notify } from 'notiflix';
 import { useSignupUserMutation } from 'redux/usersAPISlice';
 
 export function Register() {
   const [sendSignupRequest, { isLoading }] = useSignupUserMutation();
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
     const {
       name: { value: name },
       email: { value: email },
       password: { value: password },
     } = e.target.elements;
+    const userCredentials = { name, email, password };
 
-    sendSignupRequest({ name, email, password });
+    try {
+      await sendSignupRequest(userCredentials).unwrap();
+    } catch (err) {
+      Notify.failure(`Registration failed! Please try again.`);
+    }
   };
 
   return (
