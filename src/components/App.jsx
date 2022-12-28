@@ -11,10 +11,17 @@ export function App() {
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
-        <Route index element={<RestrictedRoute component={<Register />} />} />
+        <Route
+          index
+          element={
+            <RestrictedRoute redirectTo="contacts" component={<Register />} />
+          }
+        />
         <Route
           path="login"
-          element={<RestrictedRoute component={<Login />} />}
+          element={
+            <RestrictedRoute redirectTo="contacts" component={<Login />} />
+          }
         />
         <Route
           path="contacts"
