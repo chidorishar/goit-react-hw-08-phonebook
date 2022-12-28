@@ -7,7 +7,7 @@ export function UserMenu() {
 
   return (
     <>
-      <p>Hello, {userData.name}</p>
+      <p>Hello, {userData.name} 👋</p>
       <button onClick={logout}>Logout</button>
     </>
   );
