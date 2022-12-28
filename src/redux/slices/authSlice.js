@@ -19,11 +19,25 @@ const authSlice = createSlice({
   initialState: { user: null, token: null },
   reducers: {},
   extraReducers: builder => {
+    const { signupUser, loginUser, logoutUser, refreshUser } =
+      usersAPI.endpoints;
+
     builder
-      .addMatcher(usersAPI.endpoints.signupUser.matchFulfilled, setAuthData)
-      .addMatcher(usersAPI.endpoints.loginUser.matchFulfilled, setAuthData)
-      .addMatcher(usersAPI.endpoints.refreshUser.matchFulfilled, setAuthData)
-      .addMatcher(usersAPI.endpoints.logoutUser.matchFulfilled, clearAuthData);
+      .addMatcher(signupUser.matchFulfilled, setAuthData)
+      .addMatcher(loginUser.matchFulfilled, setAuthData)
+      .addMatcher(
+        refreshUser.matchPending,
+        state => (state.isUserRefreshing = true)
+      )
+      .addMatcher(refreshUser.matchFulfilled, (state, payload) => {
+        state.isUserRefreshing = false;
+        setAuthData(state, payload);
+      })
+      .addMatcher(
+        refreshUser.matchRejected,
+        state => (state.isUserRefreshing = false)
+      )
+      .addMatcher(logoutUser.matchFulfilled, clearAuthData);
   },
 });
 
