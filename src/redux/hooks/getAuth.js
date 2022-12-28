@@ -13,7 +13,7 @@ export const useAuth = () => {
 
   return {
     isUserAuthorized,
-    userData,
     isUserRefreshing,
+    userData,
   };
 };

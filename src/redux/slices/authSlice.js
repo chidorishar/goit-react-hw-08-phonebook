@@ -27,15 +27,15 @@ const authSlice = createSlice({
       .addMatcher(loginUser.matchFulfilled, setAuthData)
       .addMatcher(
         refreshUser.matchPending,
-        state => (state.isUserRefreshing = true)
+        state => (state.isRefreshingUserData = true)
       )
       .addMatcher(refreshUser.matchFulfilled, (state, payload) => {
-        state.isUserRefreshing = false;
+        state.isRefreshingUserData = false;
         setAuthData(state, payload);
       })
       .addMatcher(
         refreshUser.matchRejected,
-        state => (state.isUserRefreshing = false)
+        state => (state.isRefreshingUserData = false)
       )
       .addMatcher(logoutUser.matchFulfilled, clearAuthData);
   },
