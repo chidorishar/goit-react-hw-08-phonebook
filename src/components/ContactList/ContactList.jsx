@@ -1,14 +1,14 @@
 import { useSelector } from 'react-redux';
 
 import { useGetContactsQuery } from 'redux/slices/contactsApiSlice';
-import { getFilter } from 'redux/selectors';
+import { selectFilter } from 'redux/selectors';
 
 import { ContactsList } from './ContactList.styled';
 import { ContactListItem } from './ContactListItem/ContactListItem';
 
 export function ContactList() {
   const { data: contactsData, error, isLoading } = useGetContactsQuery();
-  const filterValue = useSelector(getFilter);
+  const filterValue = useSelector(selectFilter);
 
   //filter contacts by filter value on changes
   const filteredContacts = (() => {
