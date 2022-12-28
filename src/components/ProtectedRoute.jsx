@@ -4,8 +4,9 @@ import { PropTypes } from 'prop-types';
 import { useAuth } from 'redux/hooks/getAuth';
 
 export const RestrictedRoute = ({ component: Component, redirectTo = '/' }) => {
-  const { isLoggedIn } = useAuth();
-  return isLoggedIn ? <Navigate to={redirectTo} /> : Component;
+  const { isUserAuthorized } = useAuth();
+
+  return isUserAuthorized ? <Navigate to={redirectTo} /> : Component;
 };
 
 RestrictedRoute.propTypes = {
