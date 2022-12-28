@@ -2,7 +2,7 @@ import { PropTypes } from 'prop-types';
 
 import { theme } from 'utils/theme';
 
-import { useDeleteContactMutation } from 'redux/contactsApiSlice';
+import { useDeleteContactMutation } from 'redux/slices/contactsApiSlice';
 
 import { Box } from 'components/common/Box/Box.styled';
 import { ContactInfo, DeleteButton } from './ContactListItem.styled';

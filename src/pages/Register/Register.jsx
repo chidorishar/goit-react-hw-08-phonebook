@@ -1,6 +1,6 @@
 import { Notify } from 'notiflix';
 
-import { useSignupUserMutation } from 'redux/usersAPISlice';
+import { useSignupUserMutation } from 'redux/slices/usersAPISlice';
 
 export function Register() {
   const [sendSignupRequest, { isLoading }] = useSignupUserMutation();

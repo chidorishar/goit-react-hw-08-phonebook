@@ -1,6 +1,6 @@
 import { Notify } from 'notiflix';
 
-import { useLoginUserMutation } from 'redux/usersAPISlice';
+import { useLoginUserMutation } from 'redux/slices/usersAPISlice';
 
 export function Login() {
   const [sendLoginRequest, { isLoading }] = useLoginUserMutation();

@@ -5,7 +5,7 @@ import { nanoid } from 'nanoid';
 import {
   useAddContactMutation,
   useGetContactsQuery,
-} from 'redux/contactsApiSlice';
+} from 'redux/slices/contactsApiSlice';
 
 import {
   AddContactButton,

@@ -1,6 +1,7 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 
-import { AUTH_HEADER_NAME, axiosBaseQuery } from 'services/phonebookBackendAPI';
+import { AUTH_HEADER_NAME, axiosBaseQuery } from 'services/axiosBaseQuery';
+import { CONTACTS_DATA_CACHE_TAG } from './contactsApiSlice';
 
 export const usersAPI = createApi({
   reducerPath: 'usersAPI',
@@ -16,7 +17,7 @@ export const usersAPI = createApi({
     },
   }),
 
-  tagTypes: ['UserData'],
+  tagTypes: ['AuthData'],
 
   endpoints: builder => ({
     signupUser: builder.mutation({
@@ -25,7 +26,7 @@ export const usersAPI = createApi({
         method: 'post',
         data: userCredentials,
       }),
-      invalidatesTags: ['UserData'],
+      invalidatesTags: [CONTACTS_DATA_CACHE_TAG],
     }),
 
     loginUser: builder.mutation({
@@ -34,7 +35,7 @@ export const usersAPI = createApi({
         method: 'post',
         data: userCredentials,
       }),
-      invalidatesTags: ['UserData'],
+      invalidatesTags: [CONTACTS_DATA_CACHE_TAG],
     }),
 
     logoutUser: builder.mutation({
@@ -42,12 +43,12 @@ export const usersAPI = createApi({
         url: `logout`,
         method: 'post',
       }),
-      invalidatesTags: ['UserData'],
+      invalidatesTags: [CONTACTS_DATA_CACHE_TAG],
     }),
 
     refreshUser: builder.query({
       query: () => `current`,
-      invalidatesTags: ['UserData'],
+      invalidatesTags: [CONTACTS_DATA_CACHE_TAG],
     }),
   }),
 });

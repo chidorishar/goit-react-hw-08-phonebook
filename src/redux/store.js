@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { authReducer } from './authSlice.js';
+import { authReducer } from './slices/authSlice.js';
 
-import { phonebookAPI } from './contactsApiSlice.js';
-import { filterReducer } from './filterSlice';
-import { usersAPI } from './usersAPISlice.js';
+import { phonebookAPI } from './slices/contactsApiSlice.js';
+import { filterReducer } from './slices/filterSlice';
+import { usersAPI } from './slices/usersAPISlice.js';
 
 export const store = configureStore({
   reducer: {

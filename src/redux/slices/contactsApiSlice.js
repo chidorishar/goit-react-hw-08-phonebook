@@ -1,6 +1,6 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 
-import { AUTH_HEADER_NAME, axiosBaseQuery } from 'services/phonebookBackendAPI';
+import { AUTH_HEADER_NAME, axiosBaseQuery } from 'services/axiosBaseQuery';
 
 export const CONTACTS_DATA_CACHE_TAG = 'Contacts';
 
