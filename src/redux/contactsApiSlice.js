@@ -2,6 +2,8 @@ import { createApi } from '@reduxjs/toolkit/query/react';
 
 import { AUTH_HEADER_NAME, axiosBaseQuery } from 'services/phonebookBackendAPI';
 
+export const CONTACTS_DATA_CACHE_TAG = 'Contacts';
+
 export const phonebookAPI = createApi({
   reducerPath: 'phonebookAPI',
 
@@ -16,15 +18,21 @@ export const phonebookAPI = createApi({
     },
   }),
 
-  tagTypes: ['Contacts'],
+  tagTypes: [CONTACTS_DATA_CACHE_TAG],
 
   endpoints: builder => ({
     getContacts: builder.query({
       query: () => ` `,
-      providesTags: result => [
-        ...result.map(({ id }) => ({ type: 'Contacts', id })),
-        { type: 'Contacts', id: 'LIST' },
-      ],
+      providesTags: result =>
+        result
+          ? [
+              ...result.map(({ id }) => ({
+                type: CONTACTS_DATA_CACHE_TAG,
+                id,
+              })),
+              CONTACTS_DATA_CACHE_TAG,
+            ]
+          : [CONTACTS_DATA_CACHE_TAG],
     }),
 
     addContact: builder.mutation({
@@ -32,7 +40,7 @@ export const phonebookAPI = createApi({
         method: 'post',
         data: contactObj,
       }),
-      invalidatesTags: [{ type: 'Contacts', id: 'LIST' }],
+      invalidatesTags: [CONTACTS_DATA_CACHE_TAG],
     }),
 
     deleteContact: builder.mutation({
@@ -40,7 +48,9 @@ export const phonebookAPI = createApi({
         url: `${contactID}`,
         method: 'delete',
       }),
-      invalidatesTags: (result, error, id) => [{ type: 'Contacts', id }],
+      invalidatesTags: (result, error, id) => [
+        { type: CONTACTS_DATA_CACHE_TAG, id },
+      ],
     }),
   }),
 });
