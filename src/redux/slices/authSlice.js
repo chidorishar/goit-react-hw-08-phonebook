@@ -16,7 +16,12 @@ function clearAuthData(state) {
 
 const authSlice = createSlice({
   name: 'auth',
-  initialState: { user: null, token: null },
+  initialState: {
+    user: null,
+    token: null,
+    isUserAuthorized: false,
+    isRefreshingUserData: false,
+  },
   reducers: {},
   extraReducers: builder => {
     const { signupUser, loginUser, logoutUser, refreshUser } =
