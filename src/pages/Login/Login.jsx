@@ -1,8 +1,12 @@
+import { useDispatch } from 'react-redux';
 import { Notify } from 'notiflix';
 
 import { useLoginUserMutation } from 'redux/slices/usersAPISlice';
+import { useInvalidateContacts } from 'redux/hooks/invalidateContactsCache';
 
 export function Login() {
+  const dispatch = useDispatch();
+  useInvalidateContacts(dispatch);
   const [sendLoginRequest, { isLoading }] = useLoginUserMutation();
 
   const onSubmit = async e => {
@@ -17,7 +21,10 @@ export function Login() {
       const {
         user: { name: userName },
       } = await sendLoginRequest(userCredentials).unwrap();
-      Notify.success(`You has been successfully login! Welcome ${userName} 🥳`);
+
+      Notify.success(
+        `You have been successfully login! Welcome ${userName} 🥳`
+      );
     } catch (err) {
       console.log(err);
       Notify.failure(`Login failed! Please try again.`);

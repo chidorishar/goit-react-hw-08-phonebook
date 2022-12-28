@@ -1,8 +1,12 @@
+import { useDispatch } from 'react-redux';
 import { Notify } from 'notiflix';
 
+import { useInvalidateContacts } from 'redux/hooks/invalidateContactsCache';
 import { useSignupUserMutation } from 'redux/slices/usersAPISlice';
 
 export function Register() {
+  const dispatch = useDispatch();
+  useInvalidateContacts(dispatch);
   const [sendSignupRequest, { isLoading }] = useSignupUserMutation();
 
   const onSubmit = async e => {
@@ -19,9 +23,10 @@ export function Register() {
         user: { name: userName },
       } = await sendSignupRequest(userCredentials).unwrap();
       Notify.success(
-        `You has been successfully registered! Welcome ${userName} 🥳`
+        `You have been successfully registered! Welcome ${userName} 🥳`
       );
     } catch (err) {
+      console.log(err);
       Notify.failure(`Registration failed! Please try again.`);
     }
   };
