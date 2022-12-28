@@ -1,7 +1,6 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 
 import { AUTH_HEADER_NAME, axiosBaseQuery } from 'services/axiosBaseQuery';
-import { CONTACTS_DATA_CACHE_TAG } from './contactsApiSlice';
 
 export const usersAPI = createApi({
   reducerPath: 'usersAPI',
@@ -26,7 +25,7 @@ export const usersAPI = createApi({
         method: 'post',
         data: userCredentials,
       }),
-      invalidatesTags: [CONTACTS_DATA_CACHE_TAG],
+      invalidatesTags: ['AuthData'],
     }),
 
     loginUser: builder.mutation({
@@ -35,7 +34,7 @@ export const usersAPI = createApi({
         method: 'post',
         data: userCredentials,
       }),
-      invalidatesTags: [CONTACTS_DATA_CACHE_TAG],
+      invalidatesTags: ['AuthData'],
     }),
 
     logoutUser: builder.mutation({
@@ -43,12 +42,12 @@ export const usersAPI = createApi({
         url: `logout`,
         method: 'post',
       }),
-      invalidatesTags: [CONTACTS_DATA_CACHE_TAG],
+      invalidatesTags: ['AuthData'],
     }),
 
     refreshUser: builder.query({
       query: () => `current`,
-      invalidatesTags: [CONTACTS_DATA_CACHE_TAG],
+      invalidatesTags: ['AuthData'],
     }),
   }),
 });
