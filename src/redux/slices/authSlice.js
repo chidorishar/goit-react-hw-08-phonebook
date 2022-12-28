@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import type { RootState } from '../../app/store';
+
 import { usersAPI } from './usersAPISlice';
 
 function setAuthData(state, { payload: { token, user } }) {
@@ -28,5 +28,3 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
-
-// export const selectCurrentUser = (state) => state.auth.user;
