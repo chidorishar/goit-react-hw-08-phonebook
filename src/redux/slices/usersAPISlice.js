@@ -6,7 +6,6 @@ import {
   phonebookAPI,
 } from 'redux/slices/contactsApiSlice';
 
-// async function invalidateCashedContacts(dispatch, semaphorePromise) { }
 async function invalidateCachedContacts(_, { dispatch, queryFulfilled }) {
   try {
     await queryFulfilled;
@@ -63,7 +62,8 @@ export const usersAPI = createApi({
     }),
 
     refreshUser: builder.query({
-      query: () => `current`,
+      query: () => ({ url: `current` }),
+      onQueryStarted: invalidateCachedContacts,
       invalidatesTags: ['AuthData'],
     }),
   }),
