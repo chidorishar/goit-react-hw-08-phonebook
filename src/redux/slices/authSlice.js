@@ -28,9 +28,9 @@ const authSlice = createSlice({
     user: null,
     token: null,
     isUserAuthorized: false,
-    isRefreshingUserData: false,
   },
   reducers: {},
+
   extraReducers: builder => {
     const { signupUser, loginUser, logoutUser, refreshUser } =
       usersAPI.endpoints;
