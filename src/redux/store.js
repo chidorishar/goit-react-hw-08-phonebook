@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { authReducer } from './slices/authSlice.js';
+import persistStore from 'redux-persist/es/persistStore';
+import { persistedAuthReducer } from './slices/authSlice.js';
 
 import { phonebookAPI } from './slices/contactsApiSlice.js';
 import { filterReducer } from './slices/filterSlice';
@@ -10,10 +11,12 @@ export const store = configureStore({
     [phonebookAPI.reducerPath]: phonebookAPI.reducer,
     [usersAPI.reducerPath]: usersAPI.reducer,
     filter: filterReducer,
-    auth: authReducer,
+    auth: persistedAuthReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware()
       .concat(phonebookAPI.middleware)
       .concat(usersAPI.middleware),
 });
+
+export const persistedStore = persistStore(store);
