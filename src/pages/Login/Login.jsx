@@ -1,12 +1,8 @@
-import { useDispatch } from 'react-redux';
 import { Notify } from 'notiflix';
 
 import { useLoginUserMutation } from 'redux/slices/usersAPISlice';
-import { useInvalidateContacts } from 'redux/hooks/invalidateContactsCache';
 
 export function Login() {
-  const dispatch = useDispatch();
-  useInvalidateContacts(dispatch);
   const [sendLoginRequest, { isLoading }] = useLoginUserMutation();
 
   const onSubmit = async e => {
