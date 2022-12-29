@@ -8,6 +8,7 @@ const persistConfig = {
   key: 'auth',
   storage,
   whitelist: ['token'],
+  blacklist: [usersAPI.reducerPath],
 };
 
 function setAuthData(state, { payload: { token, user } }) {
