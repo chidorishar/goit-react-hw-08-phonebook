@@ -1,6 +1,21 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 
 import { AUTH_HEADER_NAME, axiosBaseQuery } from 'services/axiosBaseQuery';
+import {
+  CONTACTS_DATA_CACHE_TAG,
+  phonebookAPI,
+} from 'redux/slices/contactsApiSlice';
+
+// async function invalidateCashedContacts(dispatch, semaphorePromise) { }
+async function invalidateCachedContacts(_, { dispatch, queryFulfilled }) {
+  try {
+    await queryFulfilled;
+    // invalidate cached contacts data
+    dispatch(phonebookAPI.util.invalidateTags([CONTACTS_DATA_CACHE_TAG]));
+  } catch (err) {
+    _;
+  }
+}
 
 export const usersAPI = createApi({
   reducerPath: 'usersAPI',
@@ -25,6 +40,7 @@ export const usersAPI = createApi({
         method: 'post',
         data: userCredentials,
       }),
+      onQueryStarted: invalidateCachedContacts,
       invalidatesTags: ['AuthData'],
     }),
 
@@ -34,6 +50,7 @@ export const usersAPI = createApi({
         method: 'post',
         data: userCredentials,
       }),
+      onQueryStarted: invalidateCachedContacts,
       invalidatesTags: ['AuthData'],
     }),
 
