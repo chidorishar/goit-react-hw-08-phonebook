@@ -1,4 +1,5 @@
-import { HeaderLink, LinksList, LinksListItem } from './Navigation.styled';
+import { FramingInnerCommon } from 'components/common/shared.styled';
+import { HeaderLink, LinksListItem } from './Navigation.styled';
 
 const LINK_TYPES = {
   protected: 'PROT',
@@ -14,13 +15,13 @@ const LINKS = [
 export function Navigation() {
   return (
     <nav>
-      <LinksList>
+      <FramingInnerCommon as="ul">
         {LINKS.map(({ to, name }) => (
           <LinksListItem key={name}>
             <HeaderLink to={to}>{name}</HeaderLink>
           </LinksListItem>
         ))}
-      </LinksList>
+      </FramingInnerCommon>
     </nav>
   );
 }

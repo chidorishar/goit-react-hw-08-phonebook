@@ -5,7 +5,8 @@ import { theme } from 'utils/theme';
 import { useDeleteContactMutation } from 'redux/slices/contactsApiSlice';
 
 import { Box } from 'components/common/Box/Box.styled';
-import { ContactInfo, DeleteButton } from './ContactListItem.styled';
+import { InsetButtonCommon } from 'components/common/shared.styled';
+import { ContactInfo } from './ContactListItem.styled';
 
 export function ContactListItem({ contactData: { name, number, id } }) {
   const [deleteContactByID, { isLoading, isSuccess }] =
@@ -30,13 +31,13 @@ export function ContactListItem({ contactData: { name, number, id } }) {
       <ContactInfo>
         {name}: {number}
       </ContactInfo>
-      <DeleteButton
+      <InsetButtonCommon
         disabled={isLoading || isSuccess}
         onClick={() => deleteContactByID(id)}
-        isDelete={true}
+        onHoverColor={theme.colors.warning}
       >
         {isLoading || isSuccess ? 'Deleting' : 'Delete'}
-      </DeleteButton>
+      </InsetButtonCommon>
     </Box>
   );
 }
