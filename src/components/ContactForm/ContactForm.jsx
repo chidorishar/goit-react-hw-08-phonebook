@@ -8,11 +8,11 @@ import {
 } from 'redux/slices/contactsApiSlice';
 
 import {
-  AddContactButton,
-  AddContactForm,
-  InputInfoLabel,
-  ContactInput,
-} from './ContactForm.styled';
+  ButtonWideCommon,
+  InputCommon,
+  InputInfoLabelCommon,
+} from 'components/common/shared.styled';
+import { AddContactForm } from './ContactForm.styled';
 
 const INPUTS_NAMES = {
   name: 'name',
@@ -60,9 +60,9 @@ export function ContactForm() {
 
   return (
     <AddContactForm onSubmit={onSubmit}>
-      <InputInfoLabel>
+      <InputInfoLabelCommon>
         Name
-        <ContactInput
+        <InputCommon
           type="text"
           name={INPUTS_NAMES.name}
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -71,11 +71,11 @@ export function ContactForm() {
           autoFocus
           onInput={onInput}
           value={name}
-        ></ContactInput>
-      </InputInfoLabel>
-      <InputInfoLabel>
+        ></InputCommon>
+      </InputInfoLabelCommon>
+      <InputInfoLabelCommon>
         Number
-        <ContactInput
+        <InputCommon
           type="tel"
           name={INPUTS_NAMES.number}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -83,11 +83,11 @@ export function ContactForm() {
           required
           onChange={onInput}
           value={number}
-        ></ContactInput>
-      </InputInfoLabel>
-      <AddContactButton type="submit" cursor="cross" disabled={isLoading}>
+        ></InputCommon>
+      </InputInfoLabelCommon>
+      <ButtonWideCommon type="submit" cursor="cross" disabled={isLoading}>
         {isLoading ? 'Saving...' : 'Add contact'}
-      </AddContactButton>
+      </ButtonWideCommon>
     </AddContactForm>
   );
 }
