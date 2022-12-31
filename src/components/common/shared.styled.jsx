@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { color, flexbox, layout, position, space } from 'styled-system';
 
-export const activeAccentedButton = ({ theme, bgColor, onHoverColor }) => css`
+export const activeAccentedButton = ({ theme, bgColor, hoverColor }) => css`
   border: ${theme.borders.small};
 
   background-color: ${bgColor ?? theme.colors.light};
@@ -18,7 +18,7 @@ export const activeAccentedButton = ({ theme, bgColor, onHoverColor }) => css`
   &:hover {
     outline: none;
 
-    background-color: ${onHoverColor ?? theme.colors.accent};
+    background-color: ${hoverColor ?? theme.colors.accent};
     color: ${theme.colors.dark};
   }
 `;

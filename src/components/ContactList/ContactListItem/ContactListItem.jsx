@@ -34,7 +34,7 @@ export function ContactListItem({ contactData: { name, number, id } }) {
       <InsetButtonCommon
         disabled={isLoading || isSuccess}
         onClick={() => deleteContactByID(id)}
-        onHoverColor={theme.colors.warning}
+        hoverColor={theme.colors.warning}
       >
         {isLoading || isSuccess ? 'Deleting' : 'Delete'}
       </InsetButtonCommon>

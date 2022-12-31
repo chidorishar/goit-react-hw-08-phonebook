@@ -21,7 +21,7 @@ export function UserMenu() {
       <LogoutButton
         onClick={logout}
         bgColor={theme.colors.textColoredSecondary}
-        onHoverColor={theme.colors.warning}
+        hoverColor={theme.colors.warning}
       >
         Logout
       </LogoutButton>
