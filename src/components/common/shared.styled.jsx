@@ -82,6 +82,19 @@ export const ContainerCardCommon = styled.div`
   box-shadow: ${p => p.theme.shadows.medium};
 `;
 
+export const ContainerInnerCardCommon = styled.div`
+  width: 0.85;
+  margin: 0 auto;
+  margin-top: ${p => p.theme.space[4]}px;
+  border-color: ${p => p.theme.colors.accentSecondary};
+  color: ${p => p.theme.colors.textColoredSecondary};
+`;
+
+export const FormCommon = styled.form`
+  padding: ${p => p.theme.space[3]}px;
+  border-top: ${p => p.theme.borders.smallDashed};
+`;
+
 export const InsetButtonCommon = styled.button`
   ${activeAccentedButton};
 

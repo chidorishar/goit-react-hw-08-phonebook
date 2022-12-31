@@ -6,7 +6,7 @@ import { ContainerCardCommon } from 'components/common/shared.styled';
 export function Contacts() {
   return (
     <ContainerCardCommon>
-      <Box margin="0 auto" color="textColored">
+      <Box color="textColored">
         <h1>Phonebook</h1>
         <ContactForm />
 

@@ -9,10 +9,10 @@ import {
 
 import {
   ButtonWideCommon,
+  FormCommon,
   InputCommon,
   InputInfoLabelCommon,
 } from 'components/common/shared.styled';
-import { AddContactForm } from './ContactForm.styled';
 
 const INPUTS_NAMES = {
   name: 'name',
@@ -59,7 +59,7 @@ export function ContactForm() {
   };
 
   return (
-    <AddContactForm onSubmit={onSubmit}>
+    <FormCommon onSubmit={onSubmit}>
       <InputInfoLabelCommon>
         Name
         <InputCommon
@@ -88,6 +88,6 @@ export function ContactForm() {
       <ButtonWideCommon type="submit" cursor="cross" disabled={isLoading}>
         {isLoading ? 'Saving...' : 'Add contact'}
       </ButtonWideCommon>
-    </AddContactForm>
+    </FormCommon>
   );
 }
