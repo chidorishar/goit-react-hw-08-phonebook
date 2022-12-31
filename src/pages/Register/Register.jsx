@@ -13,16 +13,7 @@ import {
 
 export function Register() {
   const [sendSignupRequest, { isLoading }] = useSignupUserMutation();
-
-  const onSubmit = async e => {
-    e.preventDefault();
-    const {
-      name: { value: name },
-      email: { value: email },
-      password: { value: password },
-    } = e.target.elements;
-    const userCredentials = { name, email, password };
-
+  const registerUser = async userCredentials => {
     try {
       const {
         user: { name: userName },
@@ -36,6 +27,18 @@ export function Register() {
       console.log(err);
       Notify.failure(`Registration failed! Please try again.`);
     }
+  };
+
+  const onSubmit = e => {
+    e.preventDefault();
+    const {
+      name: { value: name },
+      email: { value: email },
+      password: { value: password },
+    } = e.target.elements;
+    const userCredentials = { name, email, password };
+
+    registerUser(userCredentials);
   };
 
   return (
