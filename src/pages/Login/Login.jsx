@@ -2,7 +2,6 @@ import { Notify } from 'notiflix';
 
 import { useLoginUserMutation } from 'redux/slices/usersAPISlice';
 
-// import { ContainerCardCommon } from 'components/common/shared.styled';
 import {
   Box,
   ButtonWideCommon,
@@ -21,7 +20,9 @@ export function Login() {
       } = await sendLoginRequest(userCredentials).unwrap();
 
       Notify.success(
-        `You have been successfully login! Welcome ${userName} 🥳`
+        `You have been successfully login! Welcome ${userName} 🥳`,
+        undefined,
+        { position: 'left-top' }
       );
     } catch (err) {
       console.log(err);

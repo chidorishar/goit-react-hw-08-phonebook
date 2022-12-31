@@ -28,7 +28,9 @@ export function Register() {
         user: { name: userName },
       } = await sendSignupRequest(userCredentials).unwrap();
       Notify.success(
-        `You have been successfully registered! Welcome ${userName} 🥳`
+        `You have been successfully registered! Welcome ${userName} 🥳`,
+        undefined,
+        { position: 'left-top' }
       );
     } catch (err) {
       console.log(err);
