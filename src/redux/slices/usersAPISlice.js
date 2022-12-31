@@ -73,5 +73,5 @@ export const {
   useSignupUserMutation,
   useLoginUserMutation,
   useLogoutUserMutation,
-  useRefreshUserQuery,
+  useLazyRefreshUserQuery,
 } = usersAPI;

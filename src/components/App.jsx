@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { useRefreshUserQuery } from 'redux/slices/usersAPISlice';
+import { store } from 'redux/store';
+import { useLazyRefreshUserQuery } from 'redux/slices/usersAPISlice';
 
 import SharedLayout from './SharedLayout/SharedLayout';
 import { Contacts } from 'pages/Contacts/Contacts';
@@ -10,7 +12,14 @@ import { RestrictedRoute } from './ProtectedRoute';
 import { PrivateRoute } from './PrivateRoute';
 
 export function App() {
-  const { isLoading: isRefreshingUserData } = useRefreshUserQuery();
+  const [refreshUser, { isLoading: isRefreshingUserData }] =
+    useLazyRefreshUserQuery();
+
+  useEffect(() => {
+    const { token } = store.getState().auth;
+
+    token && refreshUser();
+  }, []);
 
   return (
     <Routes>
