@@ -46,7 +46,7 @@ export const Container = styled.div`
   padding: 0 16px;
 `;
 
-export const FramingInnerCommon = styled.div`
+export const ContainerFrameCommon = styled.div`
   display: flex;
 
   width: fit-content;
@@ -56,8 +56,10 @@ export const FramingInnerCommon = styled.div`
   border-radius: ${({ theme: { radii } }) => radii.big};
 
   background-color: ${({ theme: { colors } }) => colors.light};
-  box-shadow: ${({ theme: { shadows } }) => shadows.inputInset};
+  box-shadow: ${({ theme: { shadows } }) => shadows.insetBig},
+    ${({ theme: { shadows } }) => shadows.insetColored};
 `;
+
 export const InsetButtonCommon = styled.button`
   ${activeAccentedButton};
 

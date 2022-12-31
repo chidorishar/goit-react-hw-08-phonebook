@@ -1,7 +1,9 @@
 import styled from '@emotion/styled';
 
 export const Header = styled.header`
-  width: 100%;
+  position: relative;
+  width: 100vw;
+  margin-bottom: ${p => p.theme.space[4]}px;
   padding: ${({ theme: { space } }) => space[3]}px;
 
   background-color: ${({ theme: { colors } }) => colors.accentSecondary};

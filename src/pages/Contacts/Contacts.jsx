@@ -5,7 +5,6 @@ export function Contacts() {
   return (
     <Box
       width="wide"
-      m={[3]}
       ml="auto"
       mr="auto"
       p={[3]}

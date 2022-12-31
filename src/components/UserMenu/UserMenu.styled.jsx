@@ -1,19 +1,22 @@
 import styled from '@emotion/styled';
 import {
-  FramingInnerCommon,
+  ContainerFrameCommon,
   InsetButtonCommon,
 } from 'components/common/shared.styled';
 
-export const LogoutButton = styled(InsetButtonCommon)``;
+export const LogoutButton = styled(InsetButtonCommon)`
+  font-weight: ${p => p.theme.fontWeights.medium};
+  color: ${({ theme: { colors } }) => colors.light};
+`;
 
-export const MenuFrame = styled(FramingInnerCommon)`
+export const MenuFrame = styled(ContainerFrameCommon)`
   --p: ${({ theme: { space } }) => space[2]}px;
 
   position: absolute;
+  top: 0;
   right: 15px;
-  transform: translateY(50);
+  transform: translateY(50%);
 
-  flex-direction: column;
   align-items: center;
 
   padding-right: var(--p);
@@ -21,11 +24,11 @@ export const MenuFrame = styled(FramingInnerCommon)`
 `;
 
 export const UserGreeting = styled.p`
-  margin-bottom: ${p => p.theme.space[1]}px;
+  margin-right: ${p => p.theme.space[2]}px;
 `;
 
 export const UserName = styled.span`
   font-weight: ${p => p.theme.fontWeights.bold};
 
-  color: ${({ theme: { colors } }) => colors.textColoredSecondary};
+  color: ${({ theme: { colors } }) => colors.dark};
 `;

@@ -37,6 +37,8 @@ export const theme = {
   shadows: {
     buttonInset: 'inset 0px 1px 8px 0px #b1b1b196',
     inputInset: 'inset 0px 2px 4px 0px #00000040',
+    insetBig: 'inset 0px 2px 8px 2px #00000024',
+    insetColored: 'inset 0px 2px 4px 0px #5c90f9',
     inputInsetWarning: 'inset 0px 2px 4px 0px #ff7777',
     small: '3px 5px 9px 0px #b6b6b6',
     medium: '2px 10px 20px #b6b6b6',

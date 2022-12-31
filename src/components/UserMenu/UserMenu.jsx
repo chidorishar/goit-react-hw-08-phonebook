@@ -16,7 +16,7 @@ export function UserMenu() {
   return (
     <MenuFrame>
       <UserGreeting>
-        Hello, <UserName>{userData.name}</UserName> 👋
+        Hello👋, <UserName>{userData.name}</UserName>
       </UserGreeting>
       <LogoutButton
         onClick={logout}
