@@ -2,6 +2,16 @@ import { Notify } from 'notiflix';
 
 import { useLoginUserMutation } from 'redux/slices/usersAPISlice';
 
+// import { ContainerCardCommon } from 'components/common/shared.styled';
+import {
+  Box,
+  ButtonWideCommon,
+  ContainerCardCommon,
+  FormCommon,
+  InputCommon,
+  InputInfoLabelCommon,
+} from 'components/common/shared.styled';
+
 export function Login() {
   const [sendLoginRequest, { isLoading }] = useLoginUserMutation();
   const loginUser = async userCredentials => {
@@ -31,18 +41,34 @@ export function Login() {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <label>
-        Email
-        <input type="email" name="email" autoComplete="on" />
-      </label>
-      <label>
-        Password
-        <input type="password" name="password" minLength="5" maxLength="12" />
-      </label>
-      <button type="submit" disabled={isLoading}>
-        Login me!
-      </button>
-    </form>
+    <ContainerCardCommon>
+      <Box color="textColored">
+        <h2>Login</h2>
+
+        <FormCommon onSubmit={onSubmit}>
+          <InputInfoLabelCommon>
+            Email
+            <InputCommon
+              type="email"
+              name="email"
+              autoComplete="on"
+              autoFocus
+            />
+          </InputInfoLabelCommon>
+          <InputInfoLabelCommon>
+            Password
+            <InputCommon
+              type="password"
+              name="password"
+              minLength="5"
+              maxLength="12"
+            />
+          </InputInfoLabelCommon>
+          <ButtonWideCommon type="submit" disabled={isLoading}>
+            Log me in!
+          </ButtonWideCommon>
+        </FormCommon>
+      </Box>
+    </ContainerCardCommon>
   );
 }
