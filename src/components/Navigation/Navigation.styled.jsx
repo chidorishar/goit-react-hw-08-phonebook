@@ -24,6 +24,10 @@ export const HeaderLink = styled(NavLink)`
   &.active {
     color: ${({ theme: { colors } }) => colors.light};
     background-color: ${({ theme: { colors } }) => colors.accent};
+
+    &:hover {
+      color: ${({ theme: { colors } }) => colors.dark};
+    }
   }
 
   &.disabled {
