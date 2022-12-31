@@ -2,6 +2,15 @@ import { Notify } from 'notiflix';
 
 import { useSignupUserMutation } from 'redux/slices/usersAPISlice';
 
+import {
+  Box,
+  ButtonWideCommon,
+  ContainerCardCommon,
+  FormCommon,
+  InputCommon,
+  InputInfoLabelCommon,
+} from 'components/common/shared.styled';
+
 export function Register() {
   const [sendSignupRequest, { isLoading }] = useSignupUserMutation();
 
@@ -28,22 +37,33 @@ export function Register() {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <label>
-        Name
-        <input type="text" name="name" autoComplete="on" />
-      </label>
-      <label>
-        Email
-        <input type="email" name="email" autoComplete="on" />
-      </label>
-      <label>
-        Password
-        <input type="password" name="password" minLength="5" maxLength="12" />
-      </label>
-      <button type="submit" disabled={isLoading}>
-        Register me
-      </button>
-    </form>
+    <ContainerCardCommon>
+      <Box color="textColored">
+        <h2>Register</h2>
+
+        <FormCommon onSubmit={onSubmit}>
+          <InputInfoLabelCommon>
+            Name
+            <InputCommon type="text" name="name" autoComplete="on" autoFocus />
+          </InputInfoLabelCommon>
+          <InputInfoLabelCommon>
+            Email
+            <InputCommon type="email" name="email" autoComplete="on" />
+          </InputInfoLabelCommon>
+          <InputInfoLabelCommon>
+            Password
+            <InputCommon
+              type="password"
+              name="password"
+              minLength="5"
+              maxLength="12"
+            />
+          </InputInfoLabelCommon>
+          <ButtonWideCommon type="submit" disabled={isLoading}>
+            Register me!
+          </ButtonWideCommon>
+        </FormCommon>
+      </Box>
+    </ContainerCardCommon>
   );
 }
