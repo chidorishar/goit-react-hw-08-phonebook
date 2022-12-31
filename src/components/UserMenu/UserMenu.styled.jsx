@@ -19,8 +19,7 @@ export const MenuFrame = styled(ContainerFrameCommon)`
 
   align-items: center;
 
-  padding-right: var(--p);
-  padding-left: var(--p);
+  padding: ${({ theme: { space } }) => space[2]}px;
 `;
 
 export const UserGreeting = styled.p`

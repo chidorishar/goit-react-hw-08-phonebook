@@ -64,7 +64,7 @@ export const ContainerFrameCommon = styled.div`
 
   width: fit-content;
   margin: 0 auto;
-  padding: ${({ theme: { space } }) => space[2]}px
+  padding: ${({ theme: { space } }) => space[3]}px
     ${({ theme: { space } }) => space[4]}px;
   border-radius: ${({ theme: { radii } }) => radii.big};
 
