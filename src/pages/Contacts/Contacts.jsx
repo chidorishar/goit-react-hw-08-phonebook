@@ -1,17 +1,11 @@
-import { Box } from 'components/common/Box/Box.styled';
 import { ContactForm, ContactList, Filter } from 'components/AllComponents';
+
+import { Box } from 'components/common/Box/Box.styled';
+import { ContainerCardCommon } from 'components/common/shared.styled';
 
 export function Contacts() {
   return (
-    <Box
-      width="wide"
-      ml="auto"
-      mr="auto"
-      p={[3]}
-      textAlign="center"
-      borderRadius="normal"
-      boxShadow="medium"
-    >
+    <ContainerCardCommon>
       <Box margin="0 auto" color="textColored">
         <h1>Phonebook</h1>
         <ContactForm />
@@ -28,6 +22,6 @@ export function Contacts() {
           <ContactList />
         </Box>
       </Box>
-    </Box>
+    </ContainerCardCommon>
   );
 }

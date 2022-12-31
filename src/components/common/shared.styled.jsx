@@ -60,6 +60,15 @@ export const ContainerFrameCommon = styled.div`
     ${({ theme: { shadows } }) => shadows.insetColored};
 `;
 
+export const ContainerCardCommon = styled.div`
+  width: ${p => p.theme.sizes.wide};
+  margin: 0 auto;
+  padding: ${p => p.theme.space[3]}px;
+  text-align: center;
+  border-radius: ${p => p.theme.radii.normal};
+  box-shadow: ${p => p.theme.shadows.medium};
+`;
+
 export const InsetButtonCommon = styled.button`
   ${activeAccentedButton};
 
