@@ -23,7 +23,7 @@ export function App() {
               index
               element={
                 <RestrictedRoute
-                  redirectTo="contacts"
+                  redirectTo="/contacts"
                   component={<Register />}
                 />
               }
@@ -31,7 +31,7 @@ export function App() {
             <Route
               path="login"
               element={
-                <RestrictedRoute redirectTo="contacts" component={<Login />} />
+                <RestrictedRoute redirectTo="/contacts" component={<Login />} />
               }
             />
             <Route
