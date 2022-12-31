@@ -4,15 +4,7 @@ import { useLoginUserMutation } from 'redux/slices/usersAPISlice';
 
 export function Login() {
   const [sendLoginRequest, { isLoading }] = useLoginUserMutation();
-
-  const onSubmit = async e => {
-    e.preventDefault();
-    const {
-      email: { value: email },
-      password: { value: password },
-    } = e.target.elements;
-    const userCredentials = { email, password };
-
+  const loginUser = async userCredentials => {
     try {
       const {
         user: { name: userName },
@@ -25,6 +17,17 @@ export function Login() {
       console.log(err);
       Notify.failure(`Login failed! Please try again.`);
     }
+  };
+
+  const onSubmit = e => {
+    e.preventDefault();
+    const {
+      email: { value: email },
+      password: { value: password },
+    } = e.target.elements;
+    const userCredentials = { email, password };
+
+    loginUser(userCredentials);
   };
 
   return (
