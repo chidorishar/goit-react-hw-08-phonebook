@@ -1,3 +1,5 @@
+import { useAuth } from 'redux/hooks/getAuth';
+
 import { ContainerFrameCommon } from 'components/common/shared.styled';
 import { HeaderLink, LinksListItem } from './Navigation.styled';
 
@@ -13,12 +15,26 @@ const LINKS = [
 ];
 
 export function Navigation() {
+  const { isUserAuthorized } = useAuth();
+
   return (
     <nav>
       <ContainerFrameCommon as="ul">
-        {LINKS.map(({ to, name }) => (
+        {LINKS.map(({ to, name, type }) => (
           <LinksListItem key={name}>
-            <HeaderLink to={to}>{name}</HeaderLink>
+            <HeaderLink
+              className={
+                (!isUserAuthorized && type === LINK_TYPES.private
+                  ? 'disabled'
+                  : '') +
+                (isUserAuthorized && type === LINK_TYPES.protected
+                  ? 'disabled'
+                  : '')
+              }
+              to={to}
+            >
+              {name}
+            </HeaderLink>
           </LinksListItem>
         ))}
       </ContainerFrameCommon>
